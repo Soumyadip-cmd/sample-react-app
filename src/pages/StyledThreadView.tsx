@@ -1,19 +1,23 @@
-// import BasicCommentList from "../components/CommentList";
-import BasicPostList from "../components/Test";
+import BasicPostList from "../components/BasicPostList";
 import CreateModal from "../components/TestCreate";
+import LogoutFunc from "../components/Logout";
 import { Box, Button, Card, CardContent, Fade, IconButton, Menu, MenuItem, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
-import Typewriter from "typewriter-effect";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import MenuIcon from "@mui/icons-material/Menu";
 import React, { useState } from "react";
+import "./StyledThread.css";
 
-const StyledThreadView: React.FC = () => {
+interface StyledThreadViewProps {
+    loggedin: boolean;
+    changeAuthState: () => void;
+}
+
+const StyledThreadView: React.FC<StyledThreadViewProps> = ({ loggedin, changeAuthState }) => {
     const [isShowTips, setIsShowTips] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
     const [openCreateModal, setOpenCreateModal] = useState(false);
-    // const navigate = useNavigate();
+    const [cat, setCat] = useState("main");
 
     const showTips = () => {
         setIsShowTips(true);
@@ -27,19 +31,15 @@ const StyledThreadView: React.FC = () => {
         setAnchorEl(null);
     };
 
-    // const handleClickCreate = () => {
-    //     navigate("/create");
-    // };
-
     const handleClickCreate = () => {
         setOpenCreateModal(true);
     };
 
     return (
-        <div style={{ width: "100%", margin: "auto" }}>
-            <Box sx={{ flexGrow: 1 }}>
+        <div className="page">
+            <Box className="navbar">
                 <AppBar position="relative">
-                    <Toolbar>
+                    <Toolbar className="toolBar">
                         <IconButton
                             size="large"
                             edge="start"
@@ -51,37 +51,109 @@ const StyledThreadView: React.FC = () => {
                             <MenuIcon />
                         </IconButton>
                         <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-                            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-                            <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
-                            <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+                            <MenuItem
+                                onClick={() => {
+                                    setCat("main");
+                                    setAnchorEl(null);
+                                }}
+                            >
+                                All posts
+                            </MenuItem>
+                            <MenuItem
+                                onClick={() => {
+                                    setCat("Java");
+                                    setAnchorEl(null);
+                                }}
+                            >
+                                Java
+                            </MenuItem>
+                            <MenuItem
+                                onClick={() => {
+                                    setCat("Python");
+                                    setAnchorEl(null);
+                                }}
+                            >
+                                Python
+                            </MenuItem>
+                            <MenuItem
+                                onClick={() => {
+                                    setCat("Javascript");
+                                    setAnchorEl(null);
+                                }}
+                            >
+                                Javascript
+                            </MenuItem>
+                            <MenuItem
+                                onClick={() => {
+                                    setCat("Golang");
+                                    setAnchorEl(null);
+                                }}
+                            >
+                                Golang
+                            </MenuItem>
+                            <MenuItem
+                                onClick={() => {
+                                    setCat("Rust");
+                                    setAnchorEl(null);
+                                }}
+                            >
+                                Rust
+                            </MenuItem>
+                            <MenuItem
+                                onClick={() => {
+                                    setCat("Kotlin");
+                                    setAnchorEl(null);
+                                }}
+                            >
+                                Kotlin
+                            </MenuItem>
+                            <MenuItem
+                                onClick={() => {
+                                    setCat("Swift");
+                                    setAnchorEl(null);
+                                }}
+                            >
+                                Swift
+                            </MenuItem>
+                            <MenuItem
+                                onClick={() => {
+                                    setCat("C#");
+                                    setAnchorEl(null);
+                                }}
+                            >
+                                C#
+                            </MenuItem>
+                            <MenuItem
+                                onClick={() => {
+                                    setCat("C++");
+                                    setAnchorEl(null);
+                                }}
+                            >
+                                C++
+                            </MenuItem>
+                            <MenuItem
+                                onClick={() => {
+                                    setCat("SQL");
+                                    setAnchorEl(null);
+                                }}
+                            >
+                                SQL
+                            </MenuItem>
                         </Menu>
-                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                            ForumHub
+                        <Typography variant="h6" component="div" className="display">
+                            {"Forumhub"}
                         </Typography>
-                        <Button color="inherit" onClick={handleClickCreate}>
-                            Create new
-                        </Button>
-                        {/* <Button color="inherit" onClick={handleClickCreate}>
-                            Create
-                        </Button> */}
-                        <Button color="inherit">Logout</Button>
+                        <Box className="buttons">
+                            <Button color="inherit" onClick={handleClickCreate}>
+                                {loggedin ? "Create new" : null}
+                            </Button>
+                            <LogoutFunc loggedin={loggedin} changeAuthState={changeAuthState} />
+                        </Box>
                     </Toolbar>
                 </AppBar>
             </Box>
-            <div style={{ width: "50vw", alignContent: "center", margin: "auto" }}>
+            <div className="threadList">
                 <CreateModal open={openCreateModal} closeModal={() => setOpenCreateModal(false)} />
-                <Typography style={{ padding: "1em 0" }}>
-                    <Typewriter
-                        onInit={(typewriter) => {
-                            typewriter
-                                .changeDelay(80)
-                                .typeString("This is much better, isn't it?")
-                                .pauseFor(1000)
-                                .callFunction(showTips)
-                                .start();
-                        }}
-                    />
-                </Typography>
                 <Fade in={isShowTips} timeout={1000}>
                     <Typography style={{ paddingBottom: "1em" }}>
                         {"Try looking at the "}
@@ -93,26 +165,12 @@ const StyledThreadView: React.FC = () => {
                     <CardContent>
                         <Typography component="p">{"Viewing thread:"}</Typography>
                         <Typography variant="h5" component="h5">
-                            {"Inspirational Quotes"}
-                        </Typography>
-                        <Typography color="textSecondary" gutterBottom>
-                            {"by Aiken"}
-                        </Typography>
-                        <Typography variant="body2" component="p">
-                            {'"The best way to predict the future is to invent it."'}
-                            <br />
-                            {"- Alan Kay"}
+                            {cat === "main" ? "All Posts" : cat}
                         </Typography>
                     </CardContent>
                 </Card>
 
-                <BasicPostList styled={true} />
-
-                <Link to="/">
-                    <Button variant="contained" color="secondary">
-                        {"Back to threads"}
-                    </Button>
-                </Link>
+                <BasicPostList styled={true} category={cat} />
             </div>
         </div>
     );

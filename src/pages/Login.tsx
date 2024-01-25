@@ -1,65 +1,109 @@
+import {
+    Avatar,
+    Box,
+    Button,
+    Container,
+    CssBaseline,
+    Grid,
+    Link,
+    TextField,
+    ThemeProvider,
+    Typography,
+    createTheme,
+} from "@mui/material";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import React, { SyntheticEvent, useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
-export const Login = () => {
+
+const defaultTheme = createTheme();
+
+interface SignInProps {
+    changeAuthState: () => void;
+}
+
+const SignIn: React.FC<SignInProps> = ({ changeAuthState }) => {
     const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [success, setSuccess] = useState(false);
+    const [pwd, setPwd] = useState("");
 
     const navigate = useNavigate();
 
-    const submit = async (e: SyntheticEvent) => {
-        e.preventDefault();
-
-        const response = await fetch("http://localhost:8000/api/register", {
-            method: "POST",
-            headers: { "Content-type": "application/json" },
-            body: JSON.stringify({
-                username,
-                password,
-            }),
-        });
-
-        const content = await response.json();
-
-        setSuccess(true);
-
-        console.log(content);
+    const handleSubmit = (event: SyntheticEvent) => {
+        event.preventDefault();
+        axios
+            .post(
+                "http://localhost:8000/login",
+                { username, password: pwd },
+                {
+                    headers: { "Content-Type": "application/json" },
+                    withCredentials: true,
+                },
+            )
+            .then((response) => {
+                console.log(response.data);
+                changeAuthState();
+                navigate("/thread/styled");
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
-    if (success) {
-        navigate("/home");
-    }
-
     return (
-        <div className="auth-form-page">
-            <main className="form-signin">
-                <form onSubmit={submit}>
-                    <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
-
-                    <div className="form-floating">
-                        <input
-                            type="username"
-                            className="form-control"
-                            placeholder="username"
+        <ThemeProvider theme={defaultTheme}>
+            <Container component="main" maxWidth="xs">
+                <CssBaseline />
+                <Box
+                    sx={{
+                        marginTop: 8,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                    }}
+                >
+                    <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+                        <LockOutlinedIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                        Sign in
+                    </Typography>
+                    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                        <TextField
+                            margin="normal"
                             required
+                            fullWidth
+                            id="username"
+                            label="Username"
+                            name="username"
+                            autoComplete="username"
+                            autoFocus
                             onChange={(e) => setUsername(e.target.value)}
                         />
-                    </div>
-
-                    <div className="form-floating">
-                        <input
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="password"
+                            label="Password"
                             type="password"
-                            className="form-control"
-                            placeholder="Password"
-                            onChange={(e) => setPassword(e.target.value)}
+                            id="password"
+                            onChange={(e) => setPwd(e.target.value)}
                         />
-                    </div>
-
-                    <button className="btn btn-primary w-100 py-2" type="submit">
-                        Sign in
-                    </button>
-                </form>
-            </main>
-        </div>
+                        <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+                            Sign In
+                        </Button>
+                        <Grid container style={{ display: "flex", justifyContent: "center" }}>
+                            <Grid item>
+                                <Link href="/signup" variant="body2">
+                                    {"Don't have an account? Sign Up"}
+                                </Link>
+                            </Grid>
+                        </Grid>
+                    </Box>
+                </Box>
+            </Container>
+        </ThemeProvider>
     );
 };
+
+export default SignIn;

@@ -3,6 +3,8 @@ type Thread = {
     CreatedAt: string;
     UpdatedAt: string;
     DeletedAt: string | null;
+    Username: string;
+    Category : string;
     Title: string;
     Content: string;
 }

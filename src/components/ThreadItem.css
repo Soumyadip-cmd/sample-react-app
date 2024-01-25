@@ -1,0 +1,58 @@
+.Java {
+    background: #61dafb;
+}
+.Python {
+    background: #b4ec0a;
+}
+.Javascript {
+    background: #e8a106;
+}
+.Golang {
+    background: #ce06ec;
+}
+.Rust {
+    background: #f20f03;
+}
+.Kotlin {
+    background: #03f8d3;
+}
+.Swift {
+    background: #02fc6a;
+}
+.CSharp {
+    background: #f80606;
+}
+.CPlus {
+    background: #059af0;
+}
+.SQL {
+    background: #f1f601;
+}
+.default {
+    background: #440de8;
+}
+.threadTitle {
+    font-size: 50px;
+    white-space: pre-wrap;
+    padding-bottom: 1em;
+  }
+  
+  .threadContent {
+    font-size: 18px;
+    white-space: pre-wrap;
+    padding-bottom: 1em;
+    text-align: justify;
+  }
+  
+  .commentCard {
+    margin-bottom: 2em;
+  }
+  
+  .metadata {
+    font-size: 14px;
+  }
+
+  .cardActions {
+    display: flex;
+    justify-content: center;
+  }

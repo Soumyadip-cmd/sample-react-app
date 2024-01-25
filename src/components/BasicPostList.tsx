@@ -1,6 +1,6 @@
 // import CommentItem from "./CommentItem";
 // import Comment from "../types/Comment";
-import ThreadItem from "./Testpart2";
+import ThreadItem from "./ThreadItem";
 import Thread from "../types/Thread";
 import { API_URL } from "../config";
 
@@ -8,18 +8,17 @@ import React, { useEffect, useState } from "react";
 
 type Props = {
     styled: boolean;
+    category: string;
 };
 
-const BasicPostList: React.FC<Props> = ({ styled }: Props) => {
+const BasicPostList: React.FC<Props> = ({ styled, category }: Props) => {
     const [threads, setThreads] = useState<Thread[]>([]);
 
     useEffect(() => {
         const fetchThreads = async () => {
             try {
-                const response = await fetch(`${API_URL}`);
+                const response = await fetch(`${API_URL}/${category}`);
                 const data = await response.json();
-                // console.log(Object.values(data.posts));
-                // console.log(data.posts[0].ID);
                 setThreads(data.posts);
             } catch (error) {
                 console.error("Error fetching comments:", error);
@@ -27,7 +26,7 @@ const BasicPostList: React.FC<Props> = ({ styled }: Props) => {
         };
 
         fetchThreads();
-    }, [threads]);// app re rerenders when threads is updated
+    }, [threads]); // app re rerenders when threads is updated
 
     return (
         <ul>

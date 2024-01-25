@@ -1,0 +1,27 @@
+.page {
+    width: 100%;
+    margin: auto;
+}
+
+.navBar {
+    flex-grow: 1;
+}
+
+.toolBar {
+    justify-content: space-between;
+}
+
+.display {
+    margin-left: 600px;
+}
+
+.threadList {
+    width: 50vw;
+    align-content: center;
+    margin: auto;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+}

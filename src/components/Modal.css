@@ -1,0 +1,28 @@
+.modal {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.24);
+    border: 2px solid #000;
+  }
+  
+  .modal-title {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .modal-form {
+    transform: translate(10%, 0%);
+  }
+  
+  .modal-input {
+    width: 80%;
+  }
+  
+  .modal-button {
+    transform: translate(25%, 0%);
+  }
