@@ -1,10 +1,9 @@
 # CVWO 2024 Assignment - Forum App (Frontend)
+## About this project
+This project is an assignment for NUS Computing for Voluntary Welfare Organisations (CVWO) for 2024.
+*Name         : Soumyadip Saha
+*
 
-This sample React app is provided to help you experiment and practice web development fundamentals.
-It shows how certain functionality can be implemented.
-However, do note that this is **far from a model example**.
-After all, we want to see how you maximise your learning in web development
-and good software development practices.
 
 ## Getting Started
 
