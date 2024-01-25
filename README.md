@@ -8,13 +8,12 @@ This project is an assignment for NUS Computing for Voluntary Welfare Organisati
 
 ## Table of contents
 
-* Runnung the app
+* Running the app
 
 * User manual
 
-## Getting Started
 
-### Running the app
+## Running the app
 
 1. [Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) this repo.
 2. [Clone](https://docs.github.com/en/get-started/quickstart/fork-a-repo#cloning-your-forked-repository) **your** forked repo.
@@ -35,47 +34,34 @@ yarn start
 7. You should see a page like this.
    ![Basic Page](public/images/BasicPage.png)
 
-### Navigating the code
 
-This is the main file structure
+## User manual
+### Getting started
+When the app starts, you will be brought to the login page. If you are a new user, click on the "Don't have an account? Sign up" link and follow the 'signup guide'. If you are an existing user, please follow the sign in guide.
 
-```
-.
-├── node_modules
-├── public
-├── src
-├── README.md
-├── tsconfig.json
-├── package.json
-├── .eslintrc.js
-├── .prettierrc.js
-└── yarn.lock
-```
+### Sign up
+* You will be prompted to enter a username and password. There are no restrictions on the length of the password.
+* Once you enter your username and password, you can click on the "Sign up" button below them. If successful, you will be redirected to the "Sign In" page. Otherwise, there will be an error notification. An error could occur due to problems with your browser or if an identical username is already registered.
+  
+### Sign in
+* You will be prompted to enter your username and password.
+* Once you enter your username and password, you can click on the "Sign in" button below them. If successful, you will be redirected to the "All posts" page. Otherwise, there will be an error notification. An error could occur due to problems with your browser or if the username or password is incorrect.
+  
+### Navigation Bar
+* The navigation bar is on top of the page. If you are not signed in, there will be two buttons on the top-right corner of the page: the "Sign In" button and the "Sign Up" button, which will redirect you to the "Sign In" page and the "Sign Out" page respectively. If you are signed in, there will be a "Create New" button to create a new thread and a "Sign Out" button to sign out of your account and redirect you to the "Sign In" page.
+* On the left there is a menu button that will open a list of categories. You can click on any of the categories to filter the posts by the category you have selected. To return to 'All Posts', click on 'All Posts' in the menu.
 
-Main directories/files to note:
+### Add thread
+* You can click on the 'Create New' button on the navigation barr to create a new thread.
+* You will be prompted by a modal overlay to enter the category of the thread, the title of the thread and the contents of the thread.
+* Once you are done, you can click on the 'create' button to add the thread. If you want to cancel, you can click on the 'cancel' button or you can click outside the modal.
 
--   `src` usually includes all your source code. That is where most of your functional code will be.
--   `README.md` is a form of documentation about the project. It is what you are reading right now.
--   `package.json` contains important metadata, for example, the dependencies and available scripts in the project.
--   `.eslintrc.js` contains the configuration for ESLint. ESLint is a tool to help enforce code consistency.
--   `.prettierrc.js` contains the configuration for Prettier. Prettier is a tool to help format code.
+### Edit thread
+* You can click on the 'Edit' button on the thread card of the thread you wnat to edit.
+* You will be prompted by a modal overlay, where you can edit the thread details. If you decided not to edit the thread, you can click the "Cancel" button on the bottom of the modal overlay.
+* You can click on the "Update" button on the bottom of the modal overlay to save the changes made to the thread.
 
-Try changing some source code and see how the app changes.
-
-## Additional Notes
-
--   This project uses [Typescript](https://www.typescriptlang.org/).
--   The linting and code formatting rules are specified in `.eslintrc.js` and `.prettierrc.js` respectively.
-    You may modify the rules.
--   The available scripts are in `package.json`.
-    Here are some scripts that you are likely to use more often:
-    -   `yarn start`
-    -   `yarn lint:fix`
-    -   `yarn format:fix`
-
-## Acknowledgements
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-This project uses [MUI](https://mui.com/),
-[TypewriterJS](https://github.com/tameemsafi/typewriterjs#readme),
-[ESLint](https://eslint.org/), [Prettier](https://prettier.io/).
+### Delete thread
+* You can click on the 'Delete' button on the thread card of the thread you want to delete.
+* You will be prompted with an alert dialog. If you decided not to delete the task, you can click the "Cancel" button on the alert dialog.
+* You can click on the "Ok" button on the alert dialog to delete the task. Note that there is no way to undo this action.
