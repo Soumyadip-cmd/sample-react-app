@@ -6,6 +6,11 @@ This project is an assignment for NUS Computing for Voluntary Welfare Organisati
 
 *
 
+## Table of contents
+
+* Runnung the app
+
+* User manual
 
 ## Getting Started
 
