@@ -31,8 +31,6 @@ yarn start
 ```
 
 6. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-7. You should see a page like this.
-   ![Basic Page](public/images/BasicPage.png)
 
 
 ## User manual
