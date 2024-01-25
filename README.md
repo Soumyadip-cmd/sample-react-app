@@ -1,6 +1,7 @@
 # CVWO 2024 Assignment - Forum App (Frontend)
 ## About this project
 This project is an assignment for NUS Computing for Voluntary Welfare Organisations (CVWO) for 2024.
+
 *Name         : Soumyadip Saha
 *
 
