@@ -1,5 +1,3 @@
-// import CommentItem from "./CommentItem";
-// import Comment from "../types/Comment";
 import ThreadItem from "./ThreadItem";
 import Thread from "../types/Thread";
 import { API_URL } from "../config";

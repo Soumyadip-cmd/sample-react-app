@@ -12,7 +12,6 @@ interface UpdateModalProps {
 }
 
 const UpdateModal: React.FC<UpdateModalProps> = ({ thread, open, closeModal }) => {
-    // const [showModal, setShowModal] = useState(false);
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
 
@@ -35,18 +34,8 @@ const UpdateModal: React.FC<UpdateModalProps> = ({ thread, open, closeModal }) =
         closeModal();
     };
 
-    // const openModal = () => {
-    //     setShowModal(true);
-    //     // console.log(showModal);
-    // };
-
-    // const closeModal = () => {
-    //     setShowModal(false);
-    // };
-
     return (
         <div>
-            {/* <button onClick={openModal}>Create New </button> */}
             <Modal open={open} onClose={closeModal}>
                 <div className="modal">
                     <Typography variant="h6" component="div" className="modal-title">

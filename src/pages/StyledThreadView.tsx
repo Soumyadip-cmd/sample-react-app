@@ -1,7 +1,7 @@
 import BasicPostList from "../components/BasicPostList";
 import CreateModal from "../components/TestCreate";
 import LogoutFunc from "../components/Logout";
-import { Box, Button, Card, CardContent, Fade, IconButton, Menu, MenuItem, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, IconButton, Menu, MenuItem, Typography } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -14,14 +14,9 @@ interface StyledThreadViewProps {
 }
 
 const StyledThreadView: React.FC<StyledThreadViewProps> = ({ loggedin, changeAuthState }) => {
-    const [isShowTips, setIsShowTips] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
     const [openCreateModal, setOpenCreateModal] = useState(false);
     const [cat, setCat] = useState("main");
-
-    const showTips = () => {
-        setIsShowTips(true);
-    };
 
     const handleMenuOpen = (e) => {
         setAnchorEl(e.currentTarget);
@@ -154,13 +149,6 @@ const StyledThreadView: React.FC<StyledThreadViewProps> = ({ loggedin, changeAut
             </Box>
             <div className="threadList">
                 <CreateModal open={openCreateModal} closeModal={() => setOpenCreateModal(false)} />
-                <Fade in={isShowTips} timeout={1000}>
-                    <Typography style={{ paddingBottom: "1em" }}>
-                        {"Try looking at the "}
-                        <a href="https://mui.com/">{"Material UI"}</a>
-                        {" docs to see what other components you can use!"}
-                    </Typography>
-                </Fade>
                 <Card>
                     <CardContent>
                         <Typography component="p">{"Viewing thread:"}</Typography>

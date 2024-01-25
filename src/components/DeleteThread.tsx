@@ -1,7 +1,7 @@
-import React from "react";
-import Thread from "../types/Thread";
-import axios from "axios";
 import { API_URL } from "../config";
+import Thread from "../types/Thread";
+import React from "react";
+import axios from "axios";
 import { Button } from "@mui/material";
 
 interface DeleteFuncProps {
@@ -12,7 +12,7 @@ const DeleteFunc: React.FC<DeleteFuncProps> = ({ thread }) => {
     const deleteUser = () => {
         if (window.confirm("Are you sure you want to delete this post??") == true) {
             axios
-                .delete(`${API_URL}/${thread.ID}`, {withCredentials: true})
+                .delete(`${API_URL}/${thread.ID}`, { withCredentials: true })
                 .then((response) => {
                     console.log(response.data.success);
                 })
@@ -23,15 +23,13 @@ const DeleteFunc: React.FC<DeleteFuncProps> = ({ thread }) => {
                     } else if (error.response?.status === 409) {
                         alert("You cannot delete this post");
                     }
-                })
+                });
         } else {
             console.log("You canceled!");
         }
     };
 
-    return (
-        <Button onClick={deleteUser}>Delete</Button>
-    )
-}
+    return <Button onClick={deleteUser}>Delete</Button>;
+};
 
 export default DeleteFunc;
