@@ -1,4 +1,4 @@
-# CVWO Assignment Sample React App
+# CVWO 2024 Assignment - Forum App (Frontend)
 
 This sample React app is provided to help you experiment and practice web development fundamentals.
 It shows how certain functionality can be implemented.
